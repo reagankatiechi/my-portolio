@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Quiz Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url("download.jpeg") no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .register-box {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.5);
+      width: 300px;
+      text-align: center;
+      color: #fff;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #ff00cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #cc0099;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-box">
+    <h2>Register</h2>
+    <input type="text" id="username" placeholder="Enter Username" required>
+    <input type="email" id="email" placeholder="Enter Email" required>
+    <input type="password" id="password" placeholder="Enter Password" required>
+    <button onclick="registerUser()">Register</button>
+  </div>
+
+  <script>
+    function registerUser() {
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      if(username && email && password){
+        localStorage.setItem("quizUser", JSON.stringify({username, email, password}));
+        alert("Registration successful! 🎉");
+        window.location.href = "index.html"; // redirect to quiz page
+      } else {
+        alert("Please fill in all fields.");
+      }
+    }
+  </script>
+</body>
+</html>
